@@ -88,8 +88,9 @@ async function playTrivia(gameStats) {
 
     // Show the end result after finishing the questions
     setTimeout(() => {
-        clearInterval(interval)
-        displayStats(gameStats)
+        clearInterval(interval);
+        displayStats(gameStats);
+        showMainMenu(gameStats);
     }, 2000);
 
 };
