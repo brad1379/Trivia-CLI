@@ -80,6 +80,8 @@ async function playTrivia(gameStats) {
         };
         
     };
+    console.log(chalk.bold("End of game."));
+    
     // Simulate processing of results before displaying
     const interval = setInterval(() => {
         console.log("Processing your results...");
