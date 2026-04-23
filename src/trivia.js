@@ -37,12 +37,10 @@ export async function showMainMenu(gameStats) {
             process.exit(0);
     };
 };
-// ======================== REMINDER ========================
-// TIME THE WHOLE TRIVIA
 
 // Main function to play trivia
 async function playTrivia(gameStats) {
-    console.log("It's time to play the gameeee");
+    const startTime = Date.now() // start quiz timer
     // Loop through the array of trivia questions and print out the question with the answer choices
     const randomNumberArray = []; // array to store random numbers to only display a question once. 
     while (randomNumberArray.length < triviaQuestions.length) {
@@ -82,8 +80,11 @@ async function playTrivia(gameStats) {
         };
         
     };
-    console.log(chalk.bold("End of game."));
-    
+    console.log(chalk.bold("End of Game\n"));
+
+    const endTime = Date.now(); // get end of game time
+    gameStats.timeToComplete = (endTime - startTime) / 1000; // Add the time toe complete trivia to the gameStats
+
     // Simulate processing of results before displaying
     const interval = setInterval(() => {
         console.log("Processing your results...");
@@ -92,9 +93,8 @@ async function playTrivia(gameStats) {
 
     // Show the end result after finishing the questions
     setTimeout(() => {
-        clearInterval(interval);
-        displayStats(gameStats);
-        showMainMenu(gameStats);
+        clearInterval(interval)
+        displayStats(gameStats)
     }, 2000);
 
 };
@@ -102,9 +102,11 @@ async function playTrivia(gameStats) {
 // Function to display the statistics of the game
 async function displayStats(gameStats) {
     console.log(chalk.blue.bold(chalk.underline("Game Statistics:")));
+    console.log(`Time to complete: ${chalk.bold(gameStats.timeToComplete)} seconds`);
     console.log(chalk.green(`Correct answers: ${gameStats.questions.correct}`));
     console.log(chalk.red(`Incorrect answers: ${gameStats.questions.incorrect}`));
     console.log(chalk.bold(`Total questions answered: ${gameStats.questions.total}`));
+
 };
 
 // Function to reset the game statistics
