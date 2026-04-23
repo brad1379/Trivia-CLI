@@ -95,7 +95,14 @@ async function playTrivia(gameStats) {
     setTimeout(() => {
         clearInterval(interval)
         displayStats(gameStats)
+        // wait 1 second then show the main menu again
+        setTimeout(() => {
+            console.log("\n")
+            showMainMenu(gameStats)
+        }, 1000);
     }, 2000);
+    
+
 
 };
 

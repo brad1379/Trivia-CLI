@@ -5,6 +5,7 @@ const gameStats = {
         incorrect: 0,
         total: 0,
     },
+    timeToComplete: 0,
 };
 
 export default gameStats;
