@@ -37,6 +37,8 @@ export async function showMainMenu(gameStats) {
             process.exit(0);
     };
 };
+// ======================== REMINDER ========================
+// TIME THE WHOLE TRIVIA
 
 // Main function to play trivia
 async function playTrivia(gameStats) {
